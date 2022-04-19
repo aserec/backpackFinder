@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Backpack finder</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input type="text" placeholder="Search backpack" #searchTerm></ion-input>
+  <!-- <input type="text" placeholder="Search backpack" #searchTerm /> -->
+  <ion-list>
+    <ion-grid>
+      <ion-row *ngFor="let bpChunk of (backpacks$ |async) | chunk : 3">
+        <ion-col size="4" *ngFor="let bp of bpChunk">
+          <ion-card>
+            <img [src]="bp.image" class="backpack-card-image" />
+            <ion-card-header>
+              <ion-card-subtitle>{{bp.brand}}</ion-card-subtitle>
+              <ion-card-title>{{bp.name}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content> {{bp.description}} </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>
