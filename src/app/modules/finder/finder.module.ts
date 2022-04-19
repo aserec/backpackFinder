@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FinderPageRoutingModule } from './finder-routing.module';
 
 import { FinderPage } from './finder.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FinderPageRoutingModule
+    FinderPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [FinderPage]
+  declarations: [FinderPage],
 })
 export class FinderPageModule {}

@@ -6,19 +6,20 @@
 
 <ion-content>
   <ion-list>
-    <ion-col size="4">
-      <ion-card *ngFor="let bp of (backpacks$ |async)">
-        <ion-card-header>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
+    <ion-grid>
+      <ion-row *ngFor="let bpChunk of (backpacks$ |async) | chunk : 3">
+        <ion-col size="4" *ngFor="let bp of bpChunk">
+          <ion-card>
+            <img [src]="bp.image" />
+            <ion-card-header>
+              <ion-card-subtitle>{{bp.brand}}</ion-card-subtitle>
+              <ion-card-title>{{bp.name}}</ion-card-title>
+            </ion-card-header>
 
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit
-          clean.
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+            <ion-card-content> {{bp.description}} </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 </ion-content>
